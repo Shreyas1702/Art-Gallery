@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const { cloudinary } = require("../cloudinary/index.js");
-const { findByIdAndDelete, findById } = require("../models/Arts");
 const Artwork = require("../models/Arts");
 const Sale = require("../models/Sales");
 const User = require("../models/user");
