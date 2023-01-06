@@ -2,10 +2,10 @@ const { urlencoded } = require("express");
 const express = require("express");
 const router = express.Router();
 const app = express();
-const { cloudinary } = require("../cloudinary/index.js");
-const Artwork = require("../models/art");
-const Sale = require("../models/sale");
-const User = require("../models/user");
+const { cloudinary } = require("./../cloudinary/index.js");
+const Artwork = require("./../models/arts");
+const Sale = require("./../models/sales");
+const User = require("./../models/user");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 

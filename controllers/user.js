@@ -1,11 +1,11 @@
 const { urlencoded } = require("express");
 const express = require("express");
-const catchAsync = require("../utils/catchAsync");
+const catchAsync = require("./../utils/catchAsync");
 const router = express.Router();
 const passport = require("passport");
 const app = express();
 
-const User = require("../models/user");
+const User = require("./../models/user");
 
 module.exports.renderRegister = (req, res) => {
   res.render("users/register");

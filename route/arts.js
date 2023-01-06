@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { isLoggedIn } = require("../middleware");
-const arts = require("../controllers/arts");
+const { isLoggedIn } = require("./../middleware");
+const arts = require("./../controllers/arts");
 const multer = require("multer");
-const { storage } = require("../cloudinary");
+const { storage } = require("./../cloudinary");
 const upload = multer({ storage });
 
 router

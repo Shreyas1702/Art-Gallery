@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const mongoose = require("mongoose");
-const Artwork = require("../models/art");
-const Sale = require("../models/sale");
-const User = require("../models/user");
+const Artwork = require("./../models/arts");
+const Sale = require("./../models/sales");
+const User = require("./../models/user");
 
-const Cart = require("../models/cart");
+const Cart = require("./../models/cart");
 
 module.exports.cartPage = async (req, res, next) => {
   const cart = await Cart.find({});
