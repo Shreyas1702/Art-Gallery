@@ -32,4 +32,4 @@ const ArtSchema = new Schema({
   author: { type: String, default: "634aaa29c1b84f9f41b4b3f2" },
 });
 
-module.exports = mongoose.model("Arts", ArtSchema);
+module.exports = mongoose.model("Art", ArtSchema);

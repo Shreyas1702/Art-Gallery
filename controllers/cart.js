@@ -2,9 +2,8 @@ const express = require("express");
 const router = express.Router();
 const app = express();
 const mongoose = require("mongoose");
-const { findByIdAndDelete, findById } = require("../models/Arts");
-const Artwork = require("../models/Arts");
-const Sale = require("../models/Sales");
+const Artwork = require("../models/art");
+const Sale = require("../models/sale");
 const User = require("../models/user");
 
 const Cart = require("../models/cart");
