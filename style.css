@@ -1,0 +1,34 @@
+.conatiner {
+  position: absolute;
+  left: 600px;
+  top: 150px;
+  width: 400px;
+  height: 400px;
+  box-shadow: 5px 10px 5px 10px #888888;
+}
+
+.input-group .custom-select {
+  width: 450px;
+  height: 30px;
+}
+
+form {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 40px;
+}
+
+#checkbox {
+  display: flex;
+  flex-direction: row;
+}
+
+.form-check {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
+#btn-submit {
+  width: 100%;
+  align-items: center;
+}

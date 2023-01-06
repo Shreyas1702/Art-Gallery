@@ -1,0 +1,35 @@
+<% layout('./layout/BoilerPlate')%> <%- include('../partials/slider')%>
+
+<h2 class="head">Explore Our Artworks</h2>
+
+<hr id="line">
+
+
+    <div class="row" id="content">
+        <% for(let art of arts){ %>
+      <div class="col-4">
+        <div class="card" style="width: 30rem">
+          <img
+          src="<%= art.image[0].url %> "
+            class="imf-fluid img-thumbnail rounded mx-auto d-block"
+            alt="..."
+          />
+          <div class="card-body">
+            <% console.log(art.title) %>
+            <h1><h1>
+            <h5 class="card-title"><%= art.title %></h5>
+            <p class="card-text">- By <%= art.name %></p>
+            <a href="/cart/<%= art._id %> " class="btn btn-success"
+              >Add To Cart</a
+            >
+            <a href="/arts/<%= art._id %> " class="btn btn-success"
+              >View Detail</a
+            >
+          </div>
+        </div>
+      </div>
+       <% } %>
+    </div>
+     
+
+

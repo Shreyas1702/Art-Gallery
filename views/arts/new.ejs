@@ -1,0 +1,104 @@
+<% layout('./layout/BoilerPlate')%>
+<div class="row mt-3">
+  <h1 class="text-center mt-2">New Artwork</h1>
+  <div class="col-md-6 offset-md-3">
+    <form
+      action="/arts"
+      method="post"
+      novalidate
+      class="form-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label class="form-label" for="title">Title</label>
+        <input
+          class="form-control"
+          type="text"
+          name="art[title]"
+          id="title"
+          required
+        />
+        <div class="valid-feedback">Looks Good!!</div>
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="name">Artist Name</label>
+        <input
+          class="form-control"
+          type="text"
+          name="art[name]"
+          id="name"
+          required
+        />
+        <div class="valid-feedback">Looks Good!!</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="description">Description</label>
+        <textarea
+          class="form-control"
+          type="text"
+          name="art[description]"
+          id="description"
+          required
+        ></textarea>
+        <div class="valid-feedback">Looks Good!!</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="formFileMultiple" class="form-label"
+          >Choose Image(s)..</label
+        >
+        <input
+          name="image"
+          class="form-control"
+          type="file"
+          id="image"
+          multiple
+        />
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="price">Artwork Price</label>
+        <div class="input-group">
+          <span class="input-group-text" id="price">INR</span>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="0.00"
+            aria-label="price"
+            aria-describedby="price"
+            name="art[price]"
+            required
+          />
+          <div class="valid-feedback">Looks Good!!</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <button class="btn btn-success" type="submit">Add Artwork</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  (function () {
+    "use strict";
+
+    const forms = document.querySelectorAll(".form-validation");
+
+    Array.from(forms).forEach(function (form) {
+      form.addEventListener(
+        "submit",
+        function (event) {
+          if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+
+          form.classList.add("was-validated");
+        },
+        false
+      );
+    });
+  })();
+</script>
