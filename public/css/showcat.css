@@ -1,0 +1,145 @@
+body {
+  background-color: #f5f5f5;
+}
+
+.navbar {
+  width: 100%;
+  line-height: 50px;
+  z-index: 2;
+  display: flex;
+  flex-direction: row;
+  font-size: 20px;
+  background-color: #262a56;
+}
+
+.title-head img {
+  margin: 15px 40px 15px 40px;
+  width: 100px;
+  height: 100px;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+  margin-right: 100px;
+  margin-top: 5px;
+}
+
+.navbar ul li {
+  margin-top: 30px;
+  list-style-type: none;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.navbar ul li a {
+  color: #f7e6b5;
+  text-decoration: none;
+  font-size: 23px;
+  border-bottom: 0.25rem solid transparent;
+}
+
+.navbar ul li a:hover {
+  color: white;
+  border-bottom-color: #e24f59;
+}
+
+.navbar ul li a.active {
+  color: black;
+  border-bottom-color: black;
+}
+
+.display h2 {
+  text-align: center;
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  color: #e24f59;
+  margin-top: 30px;
+}
+
+#content {
+  margin-top: 50px;
+}
+
+.card {
+  width: 400px;
+  height: 550px;
+  margin: 0px 50px 50px 50px;
+  margin-bottom: 300px;
+  border-radius: 30px;
+  border: none;
+}
+
+.card img {
+  width: 400px;
+  height: 330px;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.card-body a {
+  font-size: 19px;
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  border-radius: 10px;
+}
+.footer {
+  width: 100%;
+  background-color: #d3d3d3;
+  color: black;
+  text-align: center;
+  padding-top: 1rem;
+  position: relative;
+  bottom: 0;
+}
+
+.footer {
+  padding: 2rem 0;
+  background-color: #37383d;
+}
+
+.footer__nav {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  /* margin-bottom: 1rem; */
+}
+
+.footer__item {
+  margin-right: 4rem;
+}
+
+.footer__link {
+  font-size: 1.6rem;
+  color: #eee;
+  text-decoration: none;
+}
+
+.footer__logo {
+  height: 5rem;
+  align-items: center;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+}
+
+.footer__copyright {
+  font-size: 1.4rem;
+  color: #aaa;
+  text-align: center;
+}
+
+.footer__copyright .footer__link {
+  font-size: 1.4rem;
+  top: 0rem;
+}
+
+#ft_logo {
+  margin: 2rem 2rem;
+  width: 90px;
+  height: 90px;
+}

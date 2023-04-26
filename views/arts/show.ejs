@@ -1,4 +1,23 @@
 <% layout('./layout/BoilerPlate')%>
+<nav class="navbars">
+  <div class="title-head">
+    <span class="image"><img src="/image/logo1.png" /></span>
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/arts">Artworks</a></li>
+    <% if(data.admin == true){ %>
+    <li><a href="/arts/new">New Artwork</a></li>
+    <% } %> <% if(data.currentUser == true){ %>
+    <li><a href="/cart">My Cart</a></li>
+    <% } %> <% if(data.currentUser === undefined) {%>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/register">Register</a></li>
+    <% }else { %>
+    <li><a href="/logout">Logout</a></li>
+    <% } %>
+  </ul>
+</nav>
 <link rel="stylesheet" href="/css/star.css" />
 
 <div class="Detail justify-content-center">
@@ -32,7 +51,7 @@
           <div class="text-center mt-3">
             <form
               class="d-inline"
-              action="/arts/<%= data.art._id %>?_method=delete"
+              action="/arts/art/<%= data.art._id %>?_method=delete"
               method="post"
             >
               <button class="btn btn-danger" type="submit">Delete</button>

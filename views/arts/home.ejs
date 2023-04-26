@@ -16,14 +16,17 @@
   <body>
     <nav class="navbar">
       <div class="title">
-        <span class="image"><img src="/image/logo.png" /></span>
-        <h1>The Art Mart</h1>
+        <span class="image"><img src="/image/logo1.png" /></span>
       </div>
       <ul>
         <li><a href="/" class="active">Home</a></li>
         <li><a href="/arts">Artworks</a></li>
+        <% if(currentUser === undefined) {%>
         <li><a href="/login">Login</a></li>
         <li><a href="/register">Register</a></li>
+        <% }else { %>
+        <li><a href="/logout">Logout</a></li>
+        <% } %>
       </ul>
     </nav>
 

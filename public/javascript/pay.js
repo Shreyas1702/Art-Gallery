@@ -17,7 +17,7 @@ document.getElementById("rzp-button").onclick = async function (e) {
   let orderData = await response.json();
 
   var options = {
-    key: "rzp_test_qRDkDR3xC7u8U6",
+    key: "rzp_test_FMCCYhAfIQ7C1z",
     amount: amount * 100, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
     currency: "INR",
     name: "Acme Corp",

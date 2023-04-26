@@ -24,6 +24,8 @@ module.exports.cartPage = async (req, res, next) => {
     arts,
     ids,
   };
+
+  console.log(data);
   res.render("arts/cart", { data });
 };
 

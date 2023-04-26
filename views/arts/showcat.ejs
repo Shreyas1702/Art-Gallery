@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link href="/css/showcat.css" rel="stylesheet" />
+
+    <title><%= a %></title>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="title-head">
+        <span class="image"><img src="/image/logo1.png" /></span>
+      </div>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/arts">Artworks</a></li>
+        <% if(admin == true){ %>
+        <li><a href="/arts/new">New Artwork</a></li>
+        <% } %> <% if(currentUser == true){ %>
+        <li><a href="/cart">My Cart</a></li>
+        <% } %> <% if(currentUser === undefined) {%>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+        <% }else { %>
+        <li><a href="/logout">Logout</a></li>
+        <% } %>
+      </ul>
+    </nav>
+
+    <div class="display">
+      <h2><%= a %></h2>
+    </div>
+
+    <div class="row" id="content">
+      <% for(let art of arts){ %>
+      <div class="col-4">
+        <div class="card">
+          <img src="<%= art.image[0].url %> " alt="..." />
+          <div class="card-body">
+            <h3 class="card-title"><%= art.title %></h3>
+            <p class="card-text">- By <%= art.name %></p>
+            <a href="/cart/<%= art._id %> " class="btn btn-success"
+              >Add To Cart</a
+            >
+            <a href="/arts/art/<%= art._id %> " class="btn btn-success"
+              >View Detail</a
+            >
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+    <div class="footer">
+      <ul class="footer__nav">
+        <li class="footer__item">
+          <a class="footer__link" href="#">About</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Pricing</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Terms of Use</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Privacy Policy</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Careers</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Blog</a>
+        </li>
+        <li class="footer__item">
+          <a class="footer__link" href="#">Contact Us</a>
+        </li>
+      </ul>
+      <img id="ft_logo" src="image/logo1.png" alt="Logo" class="footer__logo" />
+      <p class="footer__copyright">
+        &copy; Copyright by
+        <a class="footer__link twitter-link" target="_blank" href="#">
+          Art mart</a
+        >.
+      </p>
+      <p class="footer_p">Made by : <span>Shreyas Keni</span></p>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"
+  ></script>
+</html>

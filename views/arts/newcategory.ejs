@@ -19,14 +19,14 @@
   </ul>
 </nav>
 <div class="row mt-3">
-  <h1 class="text-center mt-2">New Artwork</h1>
+  <h1 class="text-center mt-2">New Category</h1>
   <div class="col-md-6 offset-md-3">
     <form
+      action="/arts/newcategory"
       method="post"
       novalidate
       class="form-validation"
       enctype="multipart/form-data"
-      action="/arts"
     >
       <div class="mb-3">
         <label class="form-label" for="title">Title</label>
@@ -35,17 +35,6 @@
           type="text"
           name="title"
           id="title"
-          required
-        />
-        <div class="valid-feedback">Looks Good!!</div>
-      </div>
-      <div class="mb-3">
-        <label class="form-label" for="name">Artist Name</label>
-        <input
-          class="form-control"
-          type="text"
-          name="name"
-          id="name"
           required
         />
         <div class="valid-feedback">Looks Good!!</div>
@@ -63,18 +52,6 @@
         <div class="valid-feedback">Looks Good!!</div>
       </div>
 
-      <div class="input-group mb-3">
-        <label class="input-group-text" for="inputGroupSelect01"
-          >Category</label
-        >
-        <select class="form-select" id="inputGroupSelect01" name="category">
-          <option selected>Choose...</option>
-          <option value="Potrait">Potrait</option>
-          <option value="Landscape">Landscape</option>
-          <option value="Abstract">Abstract</option>
-        </select>
-      </div>
-
       <div class="mb-3">
         <label for="formFileMultiple" class="form-label"
           >Choose Image(s)..</label
@@ -87,25 +64,8 @@
           multiple
         />
       </div>
-
       <div class="mb-3">
-        <label class="form-label" for="price">Artwork Price</label>
-        <div class="input-group">
-          <span class="input-group-text" id="price">INR</span>
-          <input
-            type="text"
-            class="form-control"
-            placeholder="0.00"
-            aria-label="price"
-            aria-describedby="price"
-            name="price"
-            required
-          />
-          <div class="valid-feedback">Looks Good!!</div>
-        </div>
-      </div>
-      <div class="mb-3">
-        <button class="btn btn-success" type="submit">Add Artwork</button>
+        <button class="btn btn-success" type="submit">Add Category</button>
       </div>
     </form>
   </div>

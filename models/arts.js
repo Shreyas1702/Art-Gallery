@@ -19,6 +19,11 @@ const ArtSchema = new Schema({
   price: Number,
   description: String,
   location: String,
+  category: {
+    type: String,
+    enum: ["Potrait", "Landscape", "Abstract"],
+    required: [true, "Type of the Category should be mentioned"],
+  },
   sold: {
     type: Boolean,
     default: false,
@@ -29,7 +34,7 @@ const ArtSchema = new Schema({
       ref: "User",
     },
   ],
-  author: { type: String, default: "634aaa29c1b84f9f41b4b3f2" },
+  author: { type: String, default: "643055223d4f51e406963e23" },
 });
 
 module.exports = mongoose.model("Art", ArtSchema);

@@ -4,48 +4,114 @@ const router = express.Router();
 const app = express();
 const { cloudinary } = require("./../cloudinary/index.js");
 const Artwork = require("./../models/arts");
+const Category = require("./../models/category");
 const Sale = require("./../models/sales");
 const User = require("./../models/user");
 const Razorpay = require("razorpay");
 const crypto = require("crypto");
 
 module.exports.renderArts = async (req, res, next) => {
-  const arts = await Artwork.find({});
-  res.render("arts/artgallery", { arts });
+  if (req.user) {
+    if (req.user.admin == true) {
+      admin = true;
+      currentUser = true;
+    } else {
+      currentUser = true;
+      admin = undefined;
+    }
+  } else {
+    admin = undefined;
+    currentUser = undefined;
+  }
+
+  const cats = await Category.find({});
+  console.log(currentUser);
+  res.render("arts/artgallery", { currentUser, admin, cats });
 };
 
 module.exports.newArt = async (req, res, next) => {
-  res.render("arts/new");
+  if (req.user) {
+    if (req.user.admin == true) {
+      admin = true;
+      currentUser = true;
+    } else {
+      currentUser = true;
+      admin = undefined;
+    }
+  } else {
+    admin = undefined;
+    currentUser = undefined;
+  }
+  res.render("arts/new", { admin, currentUser });
 };
 
 module.exports.showArtwork = async (req, res) => {
   const art = await Artwork.findById(req.params.id);
   const user = req.user;
+  if (req.user) {
+    if (req.user.admin == true) {
+      admin = true;
+      currentUser = true;
+    } else {
+      currentUser = true;
+      admin = undefined;
+    }
+  } else {
+    admin = undefined;
+    currentUser = undefined;
+  }
   if (!art) {
     req.flash("error", "Cannot find that campground!");
     return res.redirect("/arts");
   }
-  res.render("arts/show", { data: { art, user } });
+  res.render("arts/show", { data: { art, user, currentUser, admin } });
 };
 
 module.exports.createArtwork = async (req, res, next) => {
-  const art = new Artwork(req.body.art);
-  console.log(
-    req.files.map((f) => ({
-      url: f.path,
-      filename: f.filename,
-    }))
-  );
-  art.image = req.files.map((f) => ({
-    url: f.path,
-    filename: f.filename,
-  }));
+  console.log(req.body);
+  console.log(req.file);
+  req.body.image = {
+    url: req.file.path,
+    filename: req.file.filename,
+  };
   console.log("Before");
-  console.log(art.image);
+  const art = await new Artwork(req.body);
+  console.log(art);
   console.log("After");
   await art.save();
   req.flash("success", "Successfully made a new Artwork!");
   res.redirect(`/arts`);
+};
+
+module.exports.createCategory = async (req, res, next) => {
+  console.log(req.body);
+  console.log(req.file);
+  req.body.image = {
+    url: req.file.path,
+    filename: req.file.filename,
+  };
+  console.log("Before");
+  const category = await new Category(req.body);
+  console.log(category);
+  console.log("After");
+  await category.save();
+  res.redirect("/arts");
+};
+
+module.exports.newCategory = async (req, res, next) => {
+  if (req.user) {
+    if (req.user.admin == true) {
+      admin = true;
+      currentUser = true;
+    } else {
+      currentUser = true;
+      admin = undefined;
+    }
+  } else {
+    admin = undefined;
+    currentUser = undefined;
+  }
+  res.render("arts/newcategory", { currentUser, admin });
 };
 
 module.exports.payment = async (req, res, next) => {
@@ -53,10 +119,10 @@ module.exports.payment = async (req, res, next) => {
   let amount = req.body.amount;
 
   console.log(amount);
-
+  console.log("payment gateway");
   const instance = new Razorpay({
-    key_id: "rzp_test_qRDkDR3xC7u8U6",
-    key_secret: "AbRSBHopa1XtKRaxYGoQMy4d",
+    key_id: "rzp_test_FMCCYhAfIQ7C1z",
+    key_secret: "6r5J9tE1WRjuqz3eNuUxAP9Y",
   });
 
   const order = await instance.orders.create({
@@ -99,7 +165,7 @@ module.exports.verify = async (req, res) => {
   razorpay_payment_id = data.razorpay_payment_id;
   order_id = data.order_id;
   razorpay_signature = data.signature;
-  secret = "AbRSBHopa1XtKRaxYGoQMy4d";
+  secret = "6r5J9tE1WRjuqz3eNuUxAP9Y";
 
   console.log(order_id);
   console.log(razorpay_payment_id);
@@ -130,4 +196,23 @@ module.exports.deleteArtwork = async (req, res) => {
   console.log(id);
   await Artwork.findByIdAndDelete(id);
   res.redirect("/arts");
+};
+
+module.exports.showcat = async (req, res) => {
+  if (req.user) {
+    if (req.user.admin == true) {
+      admin = true;
+      currentUser = true;
+    } else {
+      currentUser = true;
+      admin = undefined;
+    }
+  } else {
+    admin = undefined;
+    currentUser = undefined;
+  }
+  const a = req.params.arttype;
+  const arts = await Artwork.find({ category: a });
+  console.log(arts);
+  res.render("arts/showcat", { a, arts, currentUser, admin });
 };

@@ -78,6 +78,18 @@ app.use((req, res, next) => {
 app.use(express.static(__dirname + "/public"));
 
 app.get("/", (req, res) => {
+  if (req.user) {
+    if (req.user.admin == true) {
+      admin = true;
+      currentUser = true;
+    } else {
+      currentUser = true;
+      admin = undefined;
+    }
+  } else {
+    admin = undefined;
+    currentUser = undefined;
+  }
   res.render("arts/home.ejs");
 });
 
